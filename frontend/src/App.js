@@ -18,6 +18,7 @@ import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import PrivateRoute from "./components/PrivateRoute";
 import OrderListScreen from "./screens/OrderListScreen";
 import AdminRoute from "./components/AdminRoute";
+import AboutScreen from "./screens/AboutScreen";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -50,7 +51,7 @@ function App() {
                 <span className="badge">{cartItems.length}</span>
               )}
             </Link>
-            <a href="about.html">About</a>
+            <Link to="/about">About</Link>
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
@@ -130,6 +131,7 @@ function App() {
             <Route path="/shipping" component={ShippingScreen} />
             <Route path="/payment" component={PaymentScreen} />
             <Route path="/placeorder" component={PlaceOrderScreen} />
+            <Route path="/about" component={AboutScreen} />
             <Route path="/order/:id" component={OrderScreen} />
             <Route path="/product/:id" component={ProductScreen} />
             <Route path="/cart/:id?" component={CartScreen} />

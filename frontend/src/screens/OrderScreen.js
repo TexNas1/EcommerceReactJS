@@ -25,7 +25,7 @@ function OrderScreen(props) {
       dispatch(detailsOrder(props.match.params.id));
     }
     return () => {};
-  }, [successPay]);
+  }, [successPay,dispatch]);
 
   const handleSuccessPayment = (paymentResult) => {
     dispatch(payOrder(order, paymentResult));

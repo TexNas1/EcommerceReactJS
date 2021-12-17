@@ -19,16 +19,16 @@ function PlaceOrderScreen(props) {
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   // const shippingPrice = itemsPrice > 100 ? 0 : 10;
   const ShippingOptions = [
-    {id:1, label: "2-4 Working Days: £3.99", value: "3.99" },
-    {id:2, label: "Next Day Delivery: £7.99", value: "7.99" },
-    {id:3, label: "Free Shipping", value: "0" },
+    { id: 1, label: "2-4 Working Days: £3.99", value: "3.99" },
+    { id: 2, label: "Next Day Delivery: £7.99", value: "7.99" },
+    { id: 3, label: "Free Shipping", value: "0" },
   ];
   const [shippingPrice, setShippingPrice] = useState(false);
 
-  const onAddShipping = value => {
+  const onAddShipping = (value) => {
     setShippingPrice(value);
   };
-  
+
   // const taxPrice = 0.15 * itemsPrice;
   const totalPrice = (itemsPrice + parseFloat(shippingPrice)).toFixed(2);
 
@@ -51,11 +51,11 @@ function PlaceOrderScreen(props) {
     if (success) {
       props.history.push("/order/" + order._id);
     }
-  }, [success]);
+  }, [success, order._id, props.history]);
 
-  const checkoutHandler = () => {
-    props.history.push("/signin?redirect=shipping");
-  };
+  // const checkoutHandler = () => {
+  //   props.history.push("/signin?redirect=shipping");
+  // };
 
   return (
     <div>
@@ -119,8 +119,8 @@ function PlaceOrderScreen(props) {
             </li>
             <li>
               <div>Shipping</div>
-              </li>
-              <li>
+            </li>
+            <li>
               <div className="shippingPrices">
                 <CheckBox
                   options={ShippingOptions}

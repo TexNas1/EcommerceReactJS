@@ -16,7 +16,7 @@ function OrderScreen(props) {
   const orderDetails = useSelector((state) => state.orderDetails);
   const { loading, order, error } = orderDetails;
   // const payHandler = () => {};
-  console.log(orderDetails);
+  // console.log(orderDetails);
   const dispatch = useDispatch();
   useEffect(() => {
     if (successPay) {
@@ -25,7 +25,7 @@ function OrderScreen(props) {
       dispatch(detailsOrder(props.match.params.id));
     }
     return () => {};
-  }, [successPay,dispatch]);
+  }, [successPay, dispatch, props.history, props.match.params.id]);
 
   const handleSuccessPayment = (paymentResult) => {
     dispatch(payOrder(order, paymentResult));
@@ -58,12 +58,10 @@ function OrderScreen(props) {
             <h3>Payment</h3>
             <div>Payment Method: {order.payment.paymentMethod}</div>
             {order.isPaid ? (
-                  <MessageBox variant="success">
-                    Paid at {order.paidAt}
-                  </MessageBox>
-                ) : (
-                  <MessageBox variant="danger">Not Paid</MessageBox>
-                )}
+              <MessageBox variant="success">Paid at {order.paidAt}</MessageBox>
+            ) : (
+              <MessageBox variant="danger">Not Paid</MessageBox>
+            )}
           </div>
           <div>
             <ul className="cart-list-container">

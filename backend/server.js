@@ -19,7 +19,9 @@ mongoose
     useCreateIndex: true,
   })
   .catch((error) => console.log(error.reason));
-
+mongoose.connection.on("connected", () => {
+  console.log("Mongoose connected!!");
+});
 const app = express();
 
 app.use(bodyParser.json());
@@ -30,7 +32,6 @@ app.use("/api/orders", orderRoute);
 app.get("/api/config/paypal", (req, res) => {
   res.send(config.PAYPAL_CLIENT_ID);
 });
-
 
 if (process.env.NODE_ENV === "production") {
   app.use("/uploads", express.static(path.join(__dirname, "/../uploads")));

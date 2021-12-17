@@ -1,6 +1,6 @@
 import express from "express";
 import User from "../models/userModel";
-import { getToken, isAuth } from "../util";
+import { getToken, isAuth, isAdmin } from "../util";
 
 const router = express.Router();
 
@@ -62,7 +62,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/createadmin", async (req, res) => {
+router.get("/createadmin",isAuth, isAdmin, async (req, res) => {
   try {
     const user = new User({
       name: "TexNas",

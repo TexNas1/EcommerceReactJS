@@ -283,11 +283,12 @@ function ProductsScreen(props) {
                 ></input>
               </li>
               <li>
-                <label htmlFor="name">Category</label>
+                <label htmlFor="category">Category</label>
                 <select
-                  value={category}
+                  value={category} 
                   onChange={(e) => setCategory(e.target.value)}
                 >
+                  <option value="none">--Please choose a category--</option>
                   <option value="Men">Men</option>
                   <option value="Women">Women</option>
                   <option value="Unisex">Unisex</option>
@@ -327,6 +328,7 @@ function ProductsScreen(props) {
               <li>
                 <label htmlFor="size">Size </label>
                 <select value={size} onChange={(e) => setSize(e.target.value)}>
+                <option value="none">--Please choose a category--</option>
                   <option value="XS">Extra Small (XS)</option>
                   <option value="S">Small (S)</option>
                   <option value="M">Medium (M)</option>
